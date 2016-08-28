@@ -21,12 +21,8 @@ class Player(pygame.sprite.Sprite):
         self.screen_rect = screen.get_rect()
 
         # Start player in the center of the screen
-        self.rect.centerx = self.screen_rect.centerx
+        self.rect.centerx = 340
         self.rect.bottom = self.screen_rect.bottom
-
-        # Store a decimal value for the players center.
-        self.center_x = float(self.rect.centerx)
-        self.center_y = float(self.rect.centery)
 
         # Set X/Y movement vector
         self.change_x = 0
@@ -44,13 +40,34 @@ class Player(pygame.sprite.Sprite):
         # Gravity
         self.calc_grav()
 
-        self.center_x += self.change_x
+        # Move left/right
+        self.rect.centerx += self.change_x
 
-        self.center_y += self.change_y
+        # Collision detection
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        for block in block_hit_list:
+            # If we are moving right,
+            # set our right side to the left side of the item we hit
+            if self.change_x > 0:
+                self.rect.right = block.rect.left
+            elif self.change_x < 0:
+                # Otherwise if we are moving left, do the oposite.
+                self.rect.left = block.rect.right
 
-        # Update rect object of player
-        self.rect.centerx = self.center_x
-        self.rect.centery = self.center_y
+        self.rect.centery += self.change_y
+
+        # Check and see if we hit anything
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        for block in block_hit_list:
+
+            # Reset our position based on the top/bottom of the object.
+            if self.change_y > 0:
+                self.rect.bottom = block.rect.top
+            elif self.change_y < 0:
+                self.rect.top = block.rect.bottom
+
+            # Stop our vertical movement
+            self.change_y = 0
 
     def calc_grav(self):
         if self.change_y == 0:
@@ -69,9 +86,11 @@ class Player(pygame.sprite.Sprite):
         # Move down 2 pixels because it doesn't work well if we only move down 1
         # when working with a platform moving down.
         self.rect.y += 2
+        platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        self.rect.y -= 2
 
         # If it is ok to jump set player speed upwards
-        if self.rect.bottom >= self.screen_rect.bottom:
+        if len(platform_hit_list) > 0 or self.rect.bottom >= self.screen_rect.bottom:
             self.change_y = self.jump_height
 
     def go_left(self):
