@@ -1,10 +1,14 @@
 import pygame
 
 
-class Player():
+class Player(pygame.sprite.Sprite):
 
     def __init__(self, screen, settings):
         """Initialize player and set starting position."""
+
+        # Call the parrent's constructor
+        super().__init__()
+
         self.screen = screen
 
         # Load player graphics
@@ -25,8 +29,11 @@ class Player():
         self.center_y = float(self.rect.centery)
 
         # Set X/Y movement vector
-        self.change_y = 0
         self.change_x = 0
+        self.change_y = 0
+
+        # List of sprites we can bump against
+        self.level = None
 
         # Player attributes
         self.speed = settings.player_base_speed
@@ -79,6 +86,6 @@ class Player():
         """Stop the player movement"""
         self.change_x = 0
 
-    def blitme(self):
+    def draw(self):
         """Draw the ship at the its current location."""
         self.screen.blit(self.image, self.rect)

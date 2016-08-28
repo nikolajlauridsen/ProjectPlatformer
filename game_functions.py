@@ -33,11 +33,3 @@ def check_keyup_events(event, player):
         player.stop()
     elif event.key == pygame.K_LEFT or event.key == pygame.K_a and player.change_x < 0:
         player.stop()
-
-
-def draw_screen(screen, settings, player):
-    """Update the screen."""
-    screen.fill(settings.WHITE)
-    player.blitme()
-
-    pygame.display.flip()
