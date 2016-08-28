@@ -4,7 +4,7 @@ from settings import Settings
 settings = Settings()
 
 
-class Level(object):
+class Level:
     """ This is a generic super-class used to define a level.
         Create a child class for each level with level-specific
         info. """
@@ -13,6 +13,9 @@ class Level(object):
     # lists as needed for your game.
     platform_list = None
     enemy_list = None
+
+    # How far this world has been scrolled left/right
+    world_shift = 0
 
     # Background image
     background = None
@@ -39,3 +42,16 @@ class Level(object):
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
+
+    def shift_world(self, shift_x):
+        """ When the user moves left/right we need to scroll everything"""
+
+        # Keep track of the shift amount
+        self.world_shift += shift_x
+
+        # Go through all the sprite lists and shift
+        for platform in self.platform_list:
+            platform.rect.x += shift_x
+
+        for enemy in self.enemy_list:
+            enemy.rect.x += shift_x

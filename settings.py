@@ -12,4 +12,7 @@ class Settings:
         self.screen_size = [1280, 720]
         # Player settings
         self.player_base_speed = 7      # Higher for higher speed
-        self.player_base_jump = -15     # Lower for higher jump
+        self.player_base_jump = -13     # Lower for higher jump
+        # World options
+        self.world_shift_right = 900
+        self.world_shift_left = 300
