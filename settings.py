@@ -9,3 +9,5 @@ class Settings:
         self.RED = (255, 0, 0)
         # Window options
         self.screen_size = [800, 600]
+        # Player settings
+        self.player_base_speed = 7

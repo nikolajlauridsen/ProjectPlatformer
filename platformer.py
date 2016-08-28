@@ -10,10 +10,10 @@ def main():
     pygame.init()
 
     # Create settings object
-    gs = Settings()
+    settings = Settings()
 
     # Create screen
-    screen = pygame.display.set_mode(gs.screen_size)
+    screen = pygame.display.set_mode(settings.screen_size)
 
     pygame.display.set_caption("Platformer")
 
@@ -24,18 +24,19 @@ def main():
     clock = pygame.time.Clock()
 
     # Create unit objects
-    player = Player(screen, gs)
+    player = Player(screen, settings)
 
     # -------- Main Program Loop -----------
     while running:
 
-        gf.check_events()
+        # Event handling
+        gf.check_events(player)
 
         # ALL GAME LOGIC SHOULD GO BELOW THIS COMMENT
-
+        player.update()
         # ALL GAME LOGIC SHOULD GO ABOVE THIS COMMENT
 
-        gf.draw_screen(screen, gs, player)
+        gf.draw_screen(screen, settings, player)
 
         # Limit to 60 frames per second
         clock.tick(60)
