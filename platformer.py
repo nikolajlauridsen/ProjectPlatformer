@@ -8,6 +8,8 @@ from player import Player
 
 def main():
     """ Main function for the game. """
+
+    # -------- Set the stage -----------
     pygame.init()
 
     # Create settings object
