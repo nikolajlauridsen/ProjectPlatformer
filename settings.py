@@ -8,6 +8,6 @@ class Settings:
         self.GREEN = (0, 255, 0)
         self.RED = (255, 0, 0)
         # Window options
-        self.screen_size = [800, 600]
+        self.screen_size = [1280, 720]
         # Player settings
         self.player_base_speed = 7

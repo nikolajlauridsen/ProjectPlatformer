@@ -16,16 +16,19 @@ def check_events(player):
 
 
 def check_keydown_events(event, player):
-    """Respond to keydown events"""
+    """Respond to keydown events."""
     if event.key == pygame.K_RIGHT or event.key == 100:
         player.moving_right = True
     elif event.key == pygame.K_LEFT or event.key == 97:
         player.moving_left = True
-    elif event.key == 27:
+    if event.key == pygame.K_SPACE:
+        player.jump()
+    if event.key == 27:
         sys.exit()
 
 
 def check_keyup_events(event, player):
+    """Respond to keyup events."""
     if event.key == pygame.K_RIGHT or event.key == 100:
         player.moving_right = False
     elif event.key == pygame.K_LEFT or event.key == 97:
@@ -33,6 +36,7 @@ def check_keyup_events(event, player):
 
 
 def draw_screen(screen, settings, player):
+    """Update the screen."""
     screen.fill(settings.WHITE)
     player.blitme()
 
