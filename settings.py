@@ -10,4 +10,5 @@ class Settings:
         # Window options
         self.screen_size = [1280, 720]
         # Player settings
-        self.player_base_speed = 7
+        self.player_base_speed = 7      # Higher for higher speed
+        self.player_base_jump = -10     # Lower for higher jump

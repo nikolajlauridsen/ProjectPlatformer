@@ -24,16 +24,13 @@ class Player():
         self.center_x = float(self.rect.centerx)
         self.center_y = float(self.rect.centery)
 
-        # Movement flags
-        self.moving_right = False
-        self.moving_left = False
-
         # Set X/Y movement vector
         self.change_y = 0
         self.change_x = 0
 
-        # Player speed
+        # Player attributes
         self.speed = settings.player_base_speed
+        self.jump_height = settings.player_base_jump
 
     def update(self):
         """Update player's position based on movement flags."""
@@ -68,7 +65,7 @@ class Player():
 
         # If it is ok to jump set player speed upwards
         if self.rect.bottom >= self.screen_rect.bottom:
-            self.change_y = -10
+            self.change_y = self.jump_height
 
     def go_left(self):
         """Set the player to move left"""

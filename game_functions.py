@@ -17,21 +17,21 @@ def check_events(player):
 
 def check_keydown_events(event, player):
     """Respond to keydown events."""
-    if event.key == pygame.K_RIGHT or event.key == 100:
+    if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
         player.go_right()
-    elif event.key == pygame.K_LEFT or event.key == 97:
+    elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
         player.go_left()
     if event.key == pygame.K_SPACE:
         player.jump()
-    if event.key == 27:
+    if event.key == pygame.K_ESCAPE:
         sys.exit()
 
 
 def check_keyup_events(event, player):
     """Respond to keyup events."""
-    if event.key == pygame.K_RIGHT or event.key == 100 and player.change_x > 0:
+    if event.key == pygame.K_RIGHT or event.key == pygame.K_d and player.change_x > 0:
         player.stop()
-    elif event.key == pygame.K_LEFT or event.key == 97 and player.change_x < 0:
+    elif event.key == pygame.K_LEFT or event.key == pygame.K_a and player.change_x < 0:
         player.stop()
 
 
