@@ -30,6 +30,7 @@ class Player():
 
         # Set X/Y movement vector
         self.change_y = 0
+        self.change_x = 0
 
         # Player speed
         self.speed = settings.player_base_speed
@@ -39,10 +40,7 @@ class Player():
         # Gravity
         self.calc_grav()
 
-        if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.center_x += self.speed
-        if self.moving_left and self.rect.left > 0:
-            self.center_x -= self.speed
+        self.center_x += self.change_x
 
         self.center_y += self.change_y
 
@@ -71,6 +69,18 @@ class Player():
         # If it is ok to jump set player speed upwards
         if self.rect.bottom >= self.screen_rect.bottom:
             self.change_y = -10
+
+    def go_left(self):
+        """Set the player to move left"""
+        self.change_x = -self.speed
+
+    def go_right(self):
+        """Set the player to move right"""
+        self.change_x = self.speed
+
+    def stop(self):
+        """Stop the player movement"""
+        self.change_x = 0
 
     def blitme(self):
         """Draw the ship at the its current location."""
