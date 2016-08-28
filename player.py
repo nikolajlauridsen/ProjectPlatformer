@@ -85,7 +85,3 @@ class Player(pygame.sprite.Sprite):
     def stop(self):
         """Stop the player movement"""
         self.change_x = 0
-
-    def draw(self):
-        """Draw the ship at the its current location."""
-        self.screen.blit(self.image, self.rect)
