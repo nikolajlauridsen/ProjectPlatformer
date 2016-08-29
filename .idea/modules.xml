@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/HappyDays.iml" filepath="$PROJECT_DIR$/.idea/HappyDays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SSTgoneGUI/.idea/SSTgoneGUI.iml" filepath="$PROJECT_DIR$/../SSTgoneGUI/.idea/SSTgoneGUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Snoopvasion/.idea/Snoopvasion.iml" filepath="$PROJECT_DIR$/../Snoopvasion/.idea/Snoopvasion.iml" />
+    </modules>
+  </component>
+</project>

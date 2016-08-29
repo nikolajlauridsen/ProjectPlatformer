@@ -48,7 +48,7 @@ def main():
         gf.check_events(player)
 
         # ALL GAME LOGIC SHOULD GO BELOW THIS COMMENT
-        # Update the player.
+        # Update active sprites.
         active_sprite_list.update()
         # Update items in the level
         current_level.update()
