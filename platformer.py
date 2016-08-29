@@ -53,16 +53,7 @@ def main():
         # Update items in the level
         current_level.update()
 
-        # If the player gets near the right side, shift the world left (-x)
-        if player.rect.right >= settings.world_shift_right:
-            diff = player.rect.right - settings.world_shift_right
-            player.rect.right = settings.world_shift_right
-            current_level.shift_world(-diff)
-        # If the player gets near the left side, shift the world right (+x)
-        if player.rect.left <= settings.world_shift_left:
-            diff = settings.world_shift_left - player.rect.left
-            player.rect.left = settings.world_shift_left
-            current_level.shift_world(diff)
+        gf.shift_world(player, current_level)
         # ALL GAME LOGIC SHOULD GO ABOVE THIS COMMENT
 
         current_level.draw(screen)
